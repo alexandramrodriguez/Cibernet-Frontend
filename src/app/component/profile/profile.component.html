@@ -1,0 +1,160 @@
+<div class="d-flex position-fixed h-100 w-100">
+    <div style="position: relative; min-width: 260px; max-width: 260px">
+      <div style="position: absolute;">
+        <app-sidebar></app-sidebar>
+      </div>
+    </div>
+    <div style="position: relative; flex:1">
+      <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg" style="overflow-y: scroll;">
+        <div class="container-fluid py-4">
+          <div class="container-fluid mt--7">
+            <div class="row justify-content-center">
+  
+              <div class="card card-profile shadow align-items-start px-5" style="width: fit-content;">
+  
+                <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4 mt-5" style="height: fit-content;">
+                  <div class="row justify-content-center">
+                    <div class="col-lg-3 order-lg-2 p-3" style="width: fit-content;">
+                      <div class="card-profile-image">
+                        <a href="#">
+                          <img src="{{currentUser.imageUrl}}"
+                            class="rounded-circle" style="height: 200px; width: 200px; object-fit: contain;">
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <div class="col">
+                      <input type="button" class="btn btn-danger w-100" value="Eliminar perfil" (click)="deleteUser()">
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body pt-0 pt-md-4">
+                  <div class="row">
+                    <div class="col text-center">
+                      <h2>Bienvenido/a, {{currentUser.firstName}}</h2>
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <h3>
+                      <span class="font-weight-light">Aqui puedes actualizar tu perfil</span>
+                    </h3>
+                    <hr>
+                    <form #user="ngForm" role="form" id="frmregistrar" method="post" (ngSubmit)="submit(user.value)">
+                      <!-- <div class="container"> -->
+                      <div class="row mb-2">
+                        <div class="col row">
+                          <span for="userName" class="col-sm-4 col-form-label">Usuario:</span>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control required" name="userName" id="userName"
+                              placeholder="Ingrese el nombre de usuario" [(ngModel)]="currentUser.username" disabled>
+                            <p id="validname" class="text-danger" style="font-size: 12px;"></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row mb-2">
+                        <div class="col row">
+                          <span for="email" class="col-sm-4 col-form-label">Email:</span>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control required" name="email" id="email"
+                              placeholder="Ingrese el email" [(ngModel)]="currentUser.email">
+                            <p id="validcode" class="text-danger" style="font-size: 12px;"></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row mb-2">
+                        <div class="col row">
+                          <span for="firstName" class="col-sm-4 col-form-label">Nombre:</span>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control required" name="firstName" id="firstName"
+                              placeholder="Ingresa tu nombre" [(ngModel)]="currentUser.firstName">
+                            <p id="validfirstname" class="text-danger" style="font-size: 12px;"></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row mb-2">
+                        <div class="col row">
+                          <span for="lastName" class="col-sm-4 col-form-label">Apellido:</span>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control required" name="lastName" id="lastName"
+                              placeholder="Ingresa tu apellido" [(ngModel)]="currentUser.lastName">
+                            <p id="validlastname" class="text-danger" style="font-size: 12px;"></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row mb-2">
+                        <div class="col row">
+                          <span for="phone" class="col-sm-4 col-form-label">Telefono:</span>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control required" name="phone" id="phone"
+                              placeholder="Ingresa tu numero de telefono" [(ngModel)]="currentUser.phone">
+                            <p id="validname" class="text-danger" style="font-size: 12px;"></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row mb-2">
+                        <div class="col row">
+                          <span for="imageUrl" class="col-sm-4 col-form-label">Imagen de perfil:</span>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control required" name="imageUrl" id="imageUrl"
+                              placeholder="Ingresa la url de tu imagen" [(ngModel)]="currentUser.imageUrl">
+                            <p id="validimageurl" class="text-danger" style="font-size: 12px;"></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row mb-2 justify-content-end">
+                          <div class="form-check text-start mx-1" style="width: fit-content;">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" 
+                            [checked]="changePassword" (change)="changePassword = !changePassword">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Cambiar password
+                            </label>
+                          </div>
+                      </div>
+                      <div class="row mb-2" *ngIf="changePassword">
+                        <div class="col row">
+                          <span for="password" class="col-sm-4 col-form-label">Password:</span>
+                          <div class="col-sm-8">
+                            <input type="password" class="form-control required" name="password" id="password"
+                              placeholder="Ingrese la password" ngModel>
+                            <p id="validcode" class="text-danger" style="font-size: 12px;"></p>
+                          </div>
+                        </div>
+                      </div>                    
+                      <div class="row mb-2" *ngIf="changePassword">
+                        <div class="col row">
+                          <span for="newPassword1" class="col-sm-4 col-form-label">Nueva Password:</span>
+                          <div class="col-sm-8">
+                            <input type="password" class="form-control required" name="newPassword1" id="newPassword1"
+                              placeholder="Nueva password" ngModel>
+                            <p id="validname" class="text-danger" style="font-size: 12px;"></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row mb-2" *ngIf="changePassword">
+                        <div class="col row">
+                          <span for="name" class="col-sm-4 col-form-label">Repite la Password:</span>
+                          <div class="col-sm-8">
+                            <input type="password" class="form-control required" name="newPassword2" id="newPassword2"
+                              placeholder="Nueva password" ngModel>
+                            <p id="validname" class="text-danger" style="font-size: 12px;"></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row mb-2">
+                        <div class="col">
+                          <input type="submit" class="btn btn-success w-100" value="Actualizar perfil">
+                        </div>
+                      </div>
+                      <!-- </div> -->
+                    </form>
+                  </div>
+                </div>
+              </div>
+  
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>

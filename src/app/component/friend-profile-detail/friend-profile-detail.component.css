@@ -1,0 +1,17 @@
+.card {
+    border: none;
+    border-radius: 15px;
+  }
+  
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Puedes ajustar el padding-top según tus necesidades */
+  .container {
+    padding-top: 70px;
+  }
+
+  
+  

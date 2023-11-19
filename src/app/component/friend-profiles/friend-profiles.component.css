@@ -1,0 +1,46 @@
+/* friend-profiles.component.css */
+
+.container-fluid {
+    padding: 0; /* Elimina el relleno para que ocupe todo el ancho */
+  }
+  
+  .row {
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+  
+  .card-profile {
+    position: relative;
+    width: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  
+  .card-body {
+    padding: 0.75rem;
+  }
+  
+  .card-profile .card-profile-image {
+    width: 100%;
+  }
+  
+  .card-profile .card-profile-image img {
+    border-radius: 0;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .btn-primary {
+    color: #ffffff;
+    background-color: #5e72e4;
+    border-color: #5e72e4;
+  }
+  
+  .btn-primary:hover {
+    color: #ffffff;
+    background-color: #324cdd;
+    border-color: #324cdd;
+  }
+  

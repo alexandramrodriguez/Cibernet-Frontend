@@ -1,0 +1,22 @@
+div.inflow {
+    width: 2000px; 
+    height: 1000px; 
+    border: 1px solid blue; 
+    float: right; 
+    position: relative; 
+    margin-right: 100px;
+}
+div.positioner {
+    position: absolute; right: 0;
+} /*may not be needed: see below*/
+div.fixed {
+    width: 80px; 
+    border: 1px solid red; 
+    height: 100px; 
+    position: fixed; 
+    top: 60px; 
+    margin-left: 15px;
+}
+.card{
+    flex-direction: row;
+}

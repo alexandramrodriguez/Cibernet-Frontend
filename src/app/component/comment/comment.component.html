@@ -1,0 +1,39 @@
+<div class="d-flex position-fixed h-100 w-100">
+    <div style="position: relative; min-width: 260px; max-width: 260px">
+        <div style="position: absolute;">
+            <app-sidebar></app-sidebar>
+        </div>
+    </div>
+    <div style="position: relative; flex:1">
+        <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg"
+            style="overflow-y: scroll;">
+            <div class="container-fluid py-4">
+                <h1 class="text-center">Mis comentarios</h1>
+                <div class="container-fluid mt--7">
+                    <ul class="no-bullets px-5">
+                        <li *ngFor="let com of comments">
+                            <div class="row" style="font-size: small;">
+                                <div class="col-2 pt-2" style="width: fit-content;">
+                                    <img src="{{com.user?.imageUrl}}" class="rounded-circle"
+                                        style="height: 40px; width: 40px; object-fit: contain; background: #333;">
+                                </div>
+                                <div class="col-10">
+                                    <div class="card p-2 px-3 mt-2" style="width: fit-content; background: #ddd;">
+                                        <strong>{{com.user?.username || "User"}}</strong>
+                                        {{com.content}}
+                                    </div>
+                                    <div class="text-xs mx-2 text-start">{{com.publicationDate?.slice(0,10)}},
+                                        {{com.publicationDate?.slice(11,19)}}</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div *ngIf="comments.length ==0" class="d-flex justify-content-center align-items-center text-center"
+                    style="height: 50vh;">
+                    <h2>No existen comentarios</h2>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
